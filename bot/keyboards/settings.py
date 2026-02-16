@@ -1,24 +1,17 @@
 from collections.abc import Callable
 
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 
 
-def settings_kb(tr: Callable[..., str]) -> InlineKeyboardMarkup:
-    return InlineKeyboardMarkup(
-        inline_keyboard=[
-            [InlineKeyboardButton(text=tr("settings_button"), callback_data="settings:open")],
-        ]
+def settings_kb(tr: Callable[..., str]) -> ReplyKeyboardMarkup:
+    return ReplyKeyboardMarkup(
+        keyboard=[[KeyboardButton(text=tr("settings_button"))]],
+        resize_keyboard=True,
     )
 
 
-def settings_menu_kb(tr: Callable[..., str]) -> InlineKeyboardMarkup:
-    return InlineKeyboardMarkup(
-        inline_keyboard=[
-            [
-                InlineKeyboardButton(
-                    text=tr("settings_language_button"),
-                    callback_data="settings:lang",
-                )
-            ],
-        ]
+def settings_menu_kb(tr: Callable[..., str]) -> ReplyKeyboardMarkup:
+    return ReplyKeyboardMarkup(
+        keyboard=[[KeyboardButton(text=tr("settings_language_button"))]],
+        resize_keyboard=True,
     )
